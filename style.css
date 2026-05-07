@@ -1,0 +1,27 @@
+/* কাস্টম গ্রাডিয়েন্ট অ্যানিমেশন */
+@keyframes float {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-20px); }
+    100% { transform: translateY(0px); }
+}
+
+.blob-1 { animation: float 6s ease-in-out infinite; }
+.blob-2 { animation: float 8s ease-in-out infinite 2s; }
+
+/* স্মুথ স্ক্রলিং */
+html {
+    scroll-behavior: smooth;
+}
+
+/* গ্লাস কার্ড ইফেক্ট */
+.glass-card {
+    background: rgba(17, 24, 39, 0.7);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+::selection {
+    background: #7C3AED;
+    color: white;
+}
