@@ -31,8 +31,10 @@ body {
   font-family: 'Hind Siliguri', sans-serif;
   background: var(--cream);
   color: var(--dark);
-  overflow-x: hidden;
-  touch-action: manipulation;
+  margin: 0;
+    padding: 0;
+    overflow-x: hidden; 
+    width: 100%;
 }
 
 img {
@@ -180,6 +182,7 @@ HERO
   position: relative;
   display: flex;
   align-items: center;
+  justify-content: flex-start; /* কার্ডটিকে সবসময় বাঁদিকে রাখবে */
 }
 
 .hero-overlay {
@@ -194,13 +197,14 @@ HERO
 }
 
 .hero-card {
-  max-width: 780px;
+  max-width: 650px; /* পিসিতে কার্ডের সাইজ একটু কমানো হয়েছে যাতে ইমেজ দেখা যায় */
   background: rgba(255, 255, 255, 0.18);
   backdrop-filter: blur(15px);
   padding: 55px;
   border-radius: 30px;
   color: white;
   border: 1px solid rgba(255, 255, 255, 0.25);
+  margin-left: 5%; /* পিসিতে স্ক্রিনের একদম বাম থেকে সামান্য গ্যাপ */
 }
 
 .hero-card h1 {
@@ -627,9 +631,38 @@ RESPONSIVE (TABLET)
 RESPONSIVE (MOBILE) - FIXES ZOOM & SCROLL
 ========================= */
 @media(max-width: 768px) {
+  @media(max-width: 768px) {
+  /* মোবাইলে কার্ডের পজিশন ও সাইজ ঠিক করা */
   .hero-card {
-    padding: 35px;
+    padding: 25px;
+    max-width: 85%; /* মোবাইলে কার্ডটি আরও ছোট করা হলো */
+    margin-left: 15px; /* বাঁদিকের মার্জিন ঠিক রাখা */
+    backdrop-filter: blur(8px); /* মোবাইলে ব্লার একটু কমানো হলো স্বচ্ছতার জন্য */
   }
+
+  .hero-card h1 {
+    font-size: 24px; /* হেডলাইন ছোট করা হলো */
+    margin-bottom: 10px;
+  }
+
+  .hero-card p {
+    font-size: 14px; /* প্যারাগ্রাফ ছোট করা হলো */
+    line-height: 1.5;
+    margin-bottom: 20px;
+  }
+
+  .hero-buttons {
+    flex-direction: column;
+    gap: 10px;
+    align-items: flex-start; /* বাটনগুলো বাঁদিকে এলাইন থাকবে */
+  }
+
+  .primary-btn, .secondary-btn {
+    padding: 10px 20px;
+    font-size: 14px;
+    width: fit-content; /* বাটনগুলো বড় হয়ে স্ক্রিন দখল করবে না */
+  }
+}
 
   .hero-card h1 {
     font-size: 34px;
