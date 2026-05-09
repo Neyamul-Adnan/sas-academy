@@ -614,11 +614,12 @@ RESPONSIVE (TABLET & MOBILE MENU)
 }
 
 /* =========================
-RESPONSIVE (MOBILE)
+RESPONSIVE (MOBILE) - FINAL FIX
 ========================= */
 @media(max-width: 768px) {
+  /* নেভিবার ও হিরো সেকশন ফিক্স */
   .navbar {
-    flex-direction: column; /* মোবাইলে লোগো উপরে এবং মেনু নিচে সুন্দর দেখায় */
+    flex-direction: column;
     gap: 15px;
     padding: 10px 0;
   }
@@ -633,7 +634,6 @@ RESPONSIVE (MOBILE)
     font-size: 13px;
   }
 
-  /* হিরো কার্ড ও এলাইনমেন্ট ঠিক করা */
   .hero-card {
     padding: 25px;
     max-width: 85%;
@@ -644,22 +644,40 @@ RESPONSIVE (MOBILE)
     font-size: 26px;
   }
 
-  .hero-card p {
-    font-size: 14px;
-    margin-bottom: 20px;
+  /* মোডাল বা পপ-আপ ফিক্স (মাঝখানে রাখার জন্য) */
+  .modal-overlay {
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 
-  .hero-buttons {
+  .modal-content {
+    width: 90%;
+    max-width: 350px;
+    transform: none; 
+    margin: auto;
+    position: relative;
+    left: 0;
+  }
+
+  .modal-grid {
+    display: flex;
     flex-direction: column;
-    gap: 10px;
-    align-items: flex-start;
   }
 
-  .primary-btn, .secondary-btn {
-    padding: 10px 20px;
-    width: fit-content;
+  .modal-image img {
+    height: 200px;
+    width: 100%;
+    object-fit: cover;
   }
 
+  .modal-details {
+    padding: 20px;
+    text-align: center;
+  }
+
+  /* অন্যান্য গ্রিড ফিক্স */
   .facility-grid,
   .teacher-grid,
   .contact-wrapper {
@@ -668,32 +686,5 @@ RESPONSIVE (MOBILE)
 
   .footer-wrapper {
     flex-direction: column;
-  }
-
-  .topbar-wrapper {
-    flex-direction: column;
-    gap: 10px;
-    text-align: center;
-  }
-
-  /* MODAL MOBILE FIX */
-  .modal-content {
-    max-width: 95%;
-    max-height: 90vh;
-    border-radius: 20px;
-    overflow-y: auto;
-  }
-
-  .modal-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .modal-image img {
-    height: 200px;
-  }
-
-  .modal-details {
-    padding: 20px;
-    text-align: center;
   }
 }
