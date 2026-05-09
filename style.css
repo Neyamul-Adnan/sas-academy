@@ -674,3 +674,10 @@ RESPONSIVE
   object-fit: cover;
   display: block;
 }
+* {
+  -webkit-tap-highlight-color: transparent;
+}
+
+body {
+  touch-action: manipulation;
+}
