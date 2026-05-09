@@ -364,63 +364,77 @@ body {
     padding: 15px 10%;
     font-size: 14px;
 }
-/* Mobile Responsive Styles */
+/* Mobile Responsive Fixes */
 @media (max-width: 768px) {
-    /* Navbar fix */
-    .navbar {
-        flex-direction: column;
-        padding: 10px;
-    }
-
-    .nav-links {
-        margin: 15px 0;
-        padding: 0;
-        justify-content: center;
+    /* পুরো বডির ওভারফ্লো বন্ধ করা */
+    html, body {
+        overflow-x: hidden;
         width: 100%;
+        margin: 0;
+        padding: 0;
     }
 
-    .nav-links li a {
-        margin: 0 8px;
-        font-size: 14px;
-    }
-
-    /* Hero Section fix */
+    /* হিরো সেকশন ফিক্স */
     .hero {
-        padding: 40px 5%;
+        flex-direction: column;
+        padding: 40px 20px;
         text-align: center;
     }
 
-    .hero-content h2 {
-        font-size: 28px;
-    }
-
-    /* Features Section fix */
-    .feature-container {
-        grid-template-columns: 1fr; /* মোবাইল এ একটার নিচে একটা কার্ড আসবে */
-        padding: 0 5%;
-    }
-
-    /* Team Section fix */
-    .team-grid {
-        flex-direction: column;
-        align-items: center;
-    }
-
-    /* Contact & Footer fix */
-    .contact-container {
-        flex-direction: column;
-        text-align: center;
-    }
-
-    .contact-info {
+    .hero-content {
         max-width: 100%;
     }
 
-    .contact-map img {
-        width: 100%; /* ম্যাপটি মোবাইলে ফুল স্ক্রিন দেখাবে */
+    .hero-content h2 {
+        font-size: 24px;
+        line-height: 1.3;
     }
-    
-    .contact-info ul li {
+
+    /* বাটনের গ্যাপ ঠিক করা */
+    .center-btns {
+        flex-direction: column;
+        width: 100%;
+        gap: 10px;
+    }
+
+    .hero-btns button {
+        width: 100%; /* মোবাইলে বাটনগুলো ফুল উইথ হবে */
+    }
+
+    /* কন্টাক্ট সেকশন ও ম্যাপ ফিক্স */
+    .contact-info {
+        max-width: 100%;
+        width: 100%;
+    }
+
+    .contact-map {
+        width: 100%;
+    }
+
+    .contact-map img {
+        width: 100%;
+        height: auto;
+    }
+
+    /* নেভিগেশন বার ঠিক করা */
+    .navbar {
         justify-content: center;
+        flex-wrap: wrap;
+        padding: 10px;
+    }
+
+    .logo {
+        margin-bottom: 10px;
+        text-align: center;
+    }
+
+    .nav-links {
+        display: none; /* মোবাইলে মেনু আপাতত হাইড রাখতে পারেন অথবা নিচের মত করুন */
+    }
+
+    /* বাটনটি যাতে স্ক্রিনের বাইরে না যায় */
+    .btn-demo {
+        width: 90%;
+        margin: 10px auto;
     }
 }
