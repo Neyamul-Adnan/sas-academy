@@ -36,8 +36,6 @@ const modalName = document.getElementById("modalName");
 const modalSubject = document.getElementById("modalSubject");
 const modalDegree = document.getElementById("modalDegree");
 const modalExperience = document.getElementById("modalExperience");
-const modalAchievement = document.getElementById("modalAchievement");
-const modalSchedule = document.getElementById("modalSchedule");
 const modalImage = document.getElementById("modalImage");
 
 teacherCards.forEach(card => {
@@ -48,8 +46,6 @@ teacherCards.forEach(card => {
     modalSubject.textContent = card.dataset.subject;
     modalDegree.textContent = card.dataset.degree;
     modalExperience.textContent = card.dataset.experience;
-    modalAchievement.textContent = card.dataset.achievement;
-    modalSchedule.textContent = card.dataset.schedule;
     modalImage.src = card.dataset.image;
 
     modal.classList.add("active");
