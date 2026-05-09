@@ -364,3 +364,63 @@ body {
     padding: 15px 10%;
     font-size: 14px;
 }
+/* Mobile Responsive Styles */
+@media (max-width: 768px) {
+    /* Navbar fix */
+    .navbar {
+        flex-direction: column;
+        padding: 10px;
+    }
+
+    .nav-links {
+        margin: 15px 0;
+        padding: 0;
+        justify-content: center;
+        width: 100%;
+    }
+
+    .nav-links li a {
+        margin: 0 8px;
+        font-size: 14px;
+    }
+
+    /* Hero Section fix */
+    .hero {
+        padding: 40px 5%;
+        text-align: center;
+    }
+
+    .hero-content h2 {
+        font-size: 28px;
+    }
+
+    /* Features Section fix */
+    .feature-container {
+        grid-template-columns: 1fr; /* মোবাইল এ একটার নিচে একটা কার্ড আসবে */
+        padding: 0 5%;
+    }
+
+    /* Team Section fix */
+    .team-grid {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    /* Contact & Footer fix */
+    .contact-container {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .contact-info {
+        max-width: 100%;
+    }
+
+    .contact-map img {
+        width: 100%; /* ম্যাপটি মোবাইলে ফুল স্ক্রিন দেখাবে */
+    }
+    
+    .contact-info ul li {
+        justify-content: center;
+    }
+}
