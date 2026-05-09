@@ -35,6 +35,7 @@ body{
   background:var(--cream);
   color:var(--dark);
   overflow-x:hidden;
+  width: 100%;
 }
 
 img{
@@ -680,4 +681,58 @@ RESPONSIVE
 
 body {
   touch-action: manipulation;
+}
+/* =========================
+MOBILE MODAL FIXES
+========================= */
+@media(max-width: 768px) {
+    /* মোডাল কন্টেন্টকে স্ক্রিনের সাথে ফিট করা */
+    .modal-content {
+        max-width: 95%; /* স্ক্রিনের দুই পাশে একটু গ্যাপ থাকবে */
+        margin: 10px auto;
+        border-radius: 15px; /* মোবাইলে কোণাগুলো একটু কম বাঁকা থাকবে */
+    }
+
+    /* ইমেজ এবং ডিটেইলসকে উপর-নিচ করা (Vertical layout) */
+    .modal-grid {
+        display: flex;
+        flex-direction: column;
+    }
+
+    /* মোবাইলে ইমেজের উচ্চতা নির্দিষ্ট করা যাতে জুম মনে না হয় */
+    .modal-image img {
+        height: 250px; /* তোমার ইচ্ছেমতো কমাতে বা বাড়াতে পারো */
+        width: 100%;
+        object-fit: cover;
+    }
+
+    /* ডিটেইলস সেকশনের প্যাডিং কমানো */
+    .modal-details {
+        padding: 20px;
+    }
+
+    .modal-details h2 {
+        font-size: 28px; /* নামের ফন্ট সাইজ কমানো */
+        margin-bottom: 5px;
+    }
+
+    .modal-details h4 {
+        margin-bottom: 15px;
+    }
+
+    .modal-details p {
+        font-size: 15px;
+        margin-bottom: 10px;
+        line-height: 1.5;
+    }
+
+    /* ক্লোজ বাটনটি একটু ছোট করা */
+    .close-modal {
+        width: 35px;
+        height: 35px;
+        font-size: 18px;
+        right: 10px;
+        top: 10px;
+        z-index: 2001;
+    }
 }
