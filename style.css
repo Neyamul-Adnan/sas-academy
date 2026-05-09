@@ -32,9 +32,9 @@ body {
   background: var(--cream);
   color: var(--dark);
   margin: 0;
-    padding: 0;
-    overflow-x: hidden; 
-    width: 100%;
+  padding: 0;
+  overflow-x: hidden; 
+  width: 100%;
 }
 
 img {
@@ -182,7 +182,7 @@ HERO
   position: relative;
   display: flex;
   align-items: center;
-  justify-content: flex-start; /* কার্ডটিকে সবসময় বাঁদিকে রাখবে */
+  justify-content: flex-start; /* পিসি ও মোবাইলে কার্ড বাঁদিকে রাখবে */
 }
 
 .hero-overlay {
@@ -197,14 +197,14 @@ HERO
 }
 
 .hero-card {
-  max-width: 650px; /* পিসিতে কার্ডের সাইজ একটু কমানো হয়েছে যাতে ইমেজ দেখা যায় */
+  max-width: 650px;
   background: rgba(255, 255, 255, 0.18);
   backdrop-filter: blur(15px);
   padding: 55px;
   border-radius: 30px;
   color: white;
   border: 1px solid rgba(255, 255, 255, 0.25);
-  margin-left: 5%; /* পিসিতে স্ক্রিনের একদম বাম থেকে সামান্য গ্যাপ */
+  margin-left: 5%;
 }
 
 .hero-card h1 {
@@ -474,7 +474,7 @@ FOOTER
 }
 
 /* =========================
-MODAL (DESKTOP)
+MODAL
 ========================= */
 .modal-overlay {
   position: fixed;
@@ -574,21 +574,7 @@ MODAL (DESKTOP)
 }
 
 /* =========================
-SCROLL ANIMATION
-========================= */
-.reveal {
-  opacity: 0;
-  transform: translateY(50px);
-  transition: 1s ease;
-}
-
-.reveal.active {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-/* =========================
-RESPONSIVE (TABLET)
+RESPONSIVE (TABLET & MOBILE MENU)
 ========================= */
 @media(max-width: 992px) {
   .facility-grid,
@@ -597,79 +583,81 @@ RESPONSIVE (TABLET)
     grid-template-columns: 1fr 1fr;
   }
 
-  .hero-card h1 {
-    font-size: 42px;
-  }
-
+  /* পিসির মতো মেনু সরাসরি ওপরে রাখা */
   .nav-menu {
-    position: fixed;
-    top: 90px;
-    right: -100%;
-    width: 280px;
-    height: calc(100vh - 90px);
-    background: white;
-    flex-direction: column;
-    padding: 40px;
-    transition: var(--transition);
-    box-shadow: var(--shadow);
+    position: static;
+    width: auto;
+    height: auto;
+    background: transparent;
+    flex-direction: row;
+    padding: 0;
+    gap: 15px;
+    box-shadow: none;
+    display: flex !important;
   }
 
-  .nav-menu.active {
-    right: 0;
+  .nav-menu a {
+    font-size: 14px;
   }
 
   .hamburger {
-    display: flex;
+    display: none !important;
   }
 
   .nav-btn {
     display: none;
   }
+
+  .logo h2 {
+    font-size: 28px;
+  }
 }
 
 /* =========================
-RESPONSIVE (MOBILE) - FIXES ZOOM & SCROLL
+RESPONSIVE (MOBILE)
 ========================= */
 @media(max-width: 768px) {
-  @media(max-width: 768px) {
-  /* মোবাইলে কার্ডের পজিশন ও সাইজ ঠিক করা */
+  .navbar {
+    flex-direction: column; /* মোবাইলে লোগো উপরে এবং মেনু নিচে সুন্দর দেখায় */
+    gap: 15px;
+    padding: 10px 0;
+  }
+
+  .nav-menu {
+    gap: 12px;
+    justify-content: center;
+    width: 100%;
+  }
+
+  .nav-menu a {
+    font-size: 13px;
+  }
+
+  /* হিরো কার্ড ও এলাইনমেন্ট ঠিক করা */
   .hero-card {
     padding: 25px;
-    max-width: 85%; /* মোবাইলে কার্ডটি আরও ছোট করা হলো */
-    margin-left: 15px; /* বাঁদিকের মার্জিন ঠিক রাখা */
-    backdrop-filter: blur(8px); /* মোবাইলে ব্লার একটু কমানো হলো স্বচ্ছতার জন্য */
+    max-width: 85%;
+    margin-left: 15px;
   }
 
   .hero-card h1 {
-    font-size: 24px; /* হেডলাইন ছোট করা হলো */
-    margin-bottom: 10px;
+    font-size: 26px;
   }
 
   .hero-card p {
-    font-size: 14px; /* প্যারাগ্রাফ ছোট করা হলো */
-    line-height: 1.5;
+    font-size: 14px;
     margin-bottom: 20px;
   }
 
   .hero-buttons {
     flex-direction: column;
     gap: 10px;
-    align-items: flex-start; /* বাটনগুলো বাঁদিকে এলাইন থাকবে */
+    align-items: flex-start;
   }
 
   .primary-btn, .secondary-btn {
     padding: 10px 20px;
-    font-size: 14px;
-    width: fit-content; /* বাটনগুলো বড় হয়ে স্ক্রিন দখল করবে না */
-  }
-}
-
-  .hero-card h1 {
-    font-size: 34px;
-  }
-
-  .hero-card p {
-    font-size: 18px;
+    width: fit-content;
   }
 
   .facility-grid,
@@ -685,62 +673,27 @@ RESPONSIVE (MOBILE) - FIXES ZOOM & SCROLL
   .topbar-wrapper {
     flex-direction: column;
     gap: 10px;
+    text-align: center;
   }
 
-  .hero-buttons {
-    flex-direction: column;
-  }
-
-  .section-title h2 {
-    font-size: 32px;
-  }
-
-  /* MODAL MOBILE COMPACT FIX */
+  /* MODAL MOBILE FIX */
   .modal-content {
-    max-width: 340px; /* পপ-আপ ছোট রাখা হয়েছে */
+    max-width: 95%;
     max-height: 90vh;
     border-radius: 20px;
     overflow-y: auto;
   }
 
   .modal-grid {
-    grid-template-columns: 1fr; /* ছবি এবং লেখা উপর-নিচ */
+    grid-template-columns: 1fr;
   }
 
   .modal-image img {
-    height: 220px; /* ছবির হাইট কমানো হয়েছে যাতে জুম না মনে হয় */
+    height: 200px;
   }
 
   .modal-details {
     padding: 20px;
     text-align: center;
-  }
-
-  .modal-details h2 {
-    font-size: 24px;
-    margin-bottom: 5px;
-  }
-
-  .modal-details h4 {
-    margin-bottom: 15px;
-  }
-
-  .modal-details p {
-    font-size: 14px;
-    margin-bottom: 10px;
-    line-height: 1.5;
-  }
-
-  .modal-social {
-    justify-content: center;
-    margin-top: 15px;
-  }
-
-  .close-modal {
-    width: 35px;
-    height: 35px;
-    font-size: 18px;
-    right: 10px;
-    top: 10px;
   }
 }
