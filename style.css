@@ -109,14 +109,25 @@ NAVBAR
   align-items: center;
   padding: 18px 0;
 }
+.logo {
+  display: flex;
+  flex-direction: column; /* লেখাগুলোকে ওপর-নিচ করার জন্য */
+  align-items: center;    /* SHANRA এবং Academy দুটিকেই মাঝখানে রাখবে */
+  text-align: center;
+}
 
 .logo h2 {
   color: var(--primary);
   font-size: 36px;
+  line-height: 1;         /* গ্যাপ কমানোর জন্য */
+  margin: 0;
 }
 
 .logo span {
   font-size: 14px;
+  display: block;         /* পুরো লাইন দখল করে সেন্টারে থাকার জন্য */
+  letter-spacing: 2px;    /* দেখতে সুন্দর লাগার জন্য সামান্য স্পেস */
+  margin-top: 2px;
 }
 
 .nav-menu {
