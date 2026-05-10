@@ -204,6 +204,7 @@ HERO
   backdrop-filter: blur(15px);
   padding: 60px 40px;      /* ভেতরে স্পেস বাড়ানো হয়েছে */
   border-radius: 30px;
+  border-radius: 25px;
   color: white;
   border: 1px solid rgba(255, 255, 255, 0.25);
   text-align: center;      /* লেখাগুলোকে মাঝখানে রাখার জন্য */
@@ -229,23 +230,23 @@ HERO
 
 
 .hero-card h1 {
-  font-size: 58px;
+  font-size: 50px;
   line-height: 1.2;
   margin-bottom: 20px;
 }
 
 .hero-card p {
-  font-size: 20px;
-  line-height: 1.8;
+  font-size: 25px;
+  line-height: 1.5;
   margin-bottom: 35px;
 }
 
 
 .primary-btn,
 .secondary-btn {
-  padding: 16px 28px;
-  border-radius: 50px;
-  font-weight: 600;
+  padding: 16px 25px;
+  border-radius: 20px;
+  font-weight: 700;
   transition: var(--transition);
 }
 
