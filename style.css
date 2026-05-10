@@ -199,11 +199,10 @@ HERO
 
 .hero-card {
   width: 100%;             /* পুরো জায়গা নেওয়ার জন্য */
-  max-width: 900px;        /* পিসিতে কার্ডটি কতটুকু চওড়া হবে সেটি নিয়ন্ত্রণ করবে */
+  max-width: 1100px;        /* পিসিতে কার্ডটি কতটুকু চওড়া হবে সেটি নিয়ন্ত্রণ করবে */
   background: rgba(255, 255, 255, 0.18);
   backdrop-filter: blur(15px);
-  padding: 60px 40px;      /* ভেতরে স্পেস বাড়ানো হয়েছে */
-  border-radius: 30px;
+  padding: 50px 10px;      /* ভেতরে স্পেস বাড়ানো হয়েছে */
   border-radius: 25px;
   color: white;
   border: 1px solid rgba(255, 255, 255, 0.25);
