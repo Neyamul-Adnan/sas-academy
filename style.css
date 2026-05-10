@@ -8,9 +8,9 @@ ROOT VARIABLES
   --white: #ffffff;
   --dark: #1c1c1c;
   --gray: #666;
-  --shadow: 0 10px 30px rgba(0,0,0,0.08);
+  --shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
   --radius: 22px;
-  --transition: 0.35s ease;
+  --transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
 }
 
 /* =========================
@@ -22,69 +22,79 @@ GLOBAL
   box-sizing: border-box;
   -webkit-tap-highlight-color: transparent;
 }
-
 html {
   scroll-behavior: smooth;
 }
-
 body {
-  font-family: 'Hind Siliguri', sans-serif;
+  font-family: "Hind Siliguri", sans-serif;
   background: var(--cream);
   color: var(--dark);
-  margin: 0;
-  padding: 0;
-  overflow-x: hidden; 
+  overflow-x: hidden;
   width: 100%;
 }
-
 img {
   width: 100%;
   display: block;
 }
-
 a {
   text-decoration: none;
+  transition: var(--transition);
 }
-
 .container {
   width: min(1180px, 92%);
   margin: auto;
 }
-
 .section-padding {
   padding: 100px 0;
 }
-
 .section-title {
   text-align: center;
   margin-bottom: 60px;
 }
-
 .section-title h2 {
-  font-size: 42px;
+  font-size: clamp(32px, 5vw, 42px);
   font-weight: 700;
+  letter-spacing: -1px;
+}
+
+/* =========================
+ANIMATION KEYFRAMES
+========================= */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@keyframes float {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
 }
 
 /* =========================
 TOPBAR
 ========================= */
 .topbar {
-  background: #f9f9f9;
-  border-bottom: 1px solid #ddd;
+  background: var(--primary);
+  color: white;
   padding: 10px 0;
   font-size: 14px;
 }
-
 .topbar-wrapper {
   display: flex;
   justify-content: space-between;
   align-items: center;
-}
-
-.top-left,
-.top-right {
-  display: flex;
-  gap: 25px;
 }
 
 /* =========================
@@ -96,333 +106,333 @@ NAVBAR
   z-index: 1000;
   background: rgba(255, 255, 255, 0.95);
   backdrop-filter: blur(12px);
-  transition: var(--transition);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
 }
-
 .header.scrolled {
   box-shadow: var(--shadow);
 }
-
 .navbar {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 18px 0;
+  padding: 15px 0;
 }
 .logo {
   display: flex;
-  flex-direction: column; /* লেখাগুলোকে ওপর-নিচ করার জন্য */
-  align-items: center;    /* SHANRA এবং Academy দুটিকেই মাঝখানে রাখবে */
+  flex-direction: column;
+  align-items: center;
   text-align: center;
 }
-
 .logo h2 {
   color: var(--primary);
-  font-size: 36px;
-  line-height: 1;         /* গ্যাপ কমানোর জন্য */
+  font-size: 32px;
+  line-height: 1;
   margin: 0;
 }
-
 .logo span {
-  font-size: 14px;
-  display: block;         /* পুরো লাইন দখল করে সেন্টারে থাকার জন্য */
-  letter-spacing: 2px;    /* দেখতে সুন্দর লাগার জন্য সামান্য স্পেস */
+  font-size: 13px;
+  display: block;
+  letter-spacing: 2px;
   margin-top: 2px;
+  color: var(--gray);
 }
-
 .nav-menu {
   display: flex;
-  gap: 35px;
+  gap: clamp(15px, 3vw, 35px);
 }
-
 .nav-menu a {
   color: var(--dark);
+  font-weight: 600;
   position: relative;
-  font-weight: 500;
+  font-size: 15px;
 }
-
 .nav-menu a::after {
-  content: '';
+  content: "";
   position: absolute;
   left: 0;
-  bottom: -8px;
-  width: 0%;
+  bottom: -5px;
+  width: 0;
   height: 3px;
   background: var(--primary);
   transition: var(--transition);
 }
-
 .nav-menu a:hover::after,
 .nav-menu a.active::after {
   width: 100%;
 }
-
 .nav-btn {
-  background: linear-gradient(135deg, var(--secondary), #ff6868);
+  background: var(--secondary);
   color: white;
-  padding: 14px 24px;
+  padding: 12px 24px;
   border-radius: 50px;
   font-weight: 600;
-  transition: var(--transition);
+  box-shadow: 0 4px 15px rgba(214, 69, 69, 0.3);
 }
-
 .nav-btn:hover {
   transform: translateY(-3px);
-}
-
-.hamburger {
-  display: none;
-  flex-direction: column;
-  gap: 5px;
-  cursor: pointer;
-}
-
-.hamburger span {
-  width: 26px;
-  height: 3px;
-  background: #222;
-  border-radius: 20px;
+  filter: brightness(1.1);
 }
 
 /* =========================
 HERO
 ========================= */
 .hero {
-  min-height: 92vh;
-  background: url('https://images.unsplash.com/photo-1509062522246-3755977927d7?q=80&w=1600') center/cover no-repeat;
-  position: relative;
+  min-height: 90vh;
+  background: url("https://images.unsplash.com/photo-1509062522246-3755977927d7?q=80&w=1600")
+    center/cover no-repeat;
   display: flex;
   align-items: center;
-  justify-content: center; /* কার্ডটিকে পিসি এবং মোবাইলে মাঝখানে রাখবে */
-  padding: 20px;
+  justify-content: center;
+  position: relative;
+  padding: 40px 20px;
 }
-
-.hero-card {
-  width: 100%;             /* পুরো জায়গা নেওয়ার জন্য */
-  max-width: 1100px;        /* পিসিতে কার্ডটি কতটুকু চওড়া হবে সেটি নিয়ন্ত্রণ করবে */
-  background: rgba(255, 255, 255, 0.18);
-  backdrop-filter: blur(15px);
-  padding: 50px 10px;      /* ভেতরে স্পেস বাড়ানো হয়েছে */
-  border-radius: 25px;
-  color: white;
-  border: 1px solid rgba(255, 255, 255, 0.25);
-  text-align: center;      /* লেখাগুলোকে মাঝখানে রাখার জন্য */
-  margin: 0 auto;
-}
-
-.hero-buttons {
-  display: flex;
-  gap: 20px;
-  justify-content: center; /* বাটনগুলোকে মাঝখানে রাখবে */
-}
-
 .hero-overlay {
   position: absolute;
   inset: 0;
-  background: rgba(0, 0, 0, 0.45);
+  background: rgba(0, 0, 0, 0.5);
 }
-
 .hero-content {
   position: relative;
   z-index: 2;
+  width: 100%;
+  display: flex;
+  justify-content: center;
 }
-
-
+.hero-card {
+  width: 100%;
+  max-width: 900px;
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(15px);
+  padding: clamp(30px, 8vw, 60px);
+  border-radius: 30px;
+  color: white;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  text-align: center;
+  animation:
+    fadeInUp 1s ease-out,
+    float 5s ease-in-out infinite;
+}
 .hero-card h1 {
-  font-size: 50px;
+  font-size: clamp(28px, 6vw, 54px);
   line-height: 1.2;
   margin-bottom: 20px;
+  font-weight: 700;
 }
-
 .hero-card p {
-  font-size: 25px;
-  line-height: 1.5;
+  font-size: clamp(16px, 3vw, 22px);
+  line-height: 1.6;
   margin-bottom: 35px;
+  opacity: 0.9;
 }
-
-
+.hero-buttons {
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
 .primary-btn,
 .secondary-btn {
-  padding: 16px 25px;
-  border-radius: 20px;
+  padding: 14px 28px;
+  border-radius: 50px;
   font-weight: 700;
+  font-size: 16px;
   transition: var(--transition);
 }
-
 .primary-btn {
   background: var(--primary);
   color: white;
+  border: 1px solid var(--primary);
 }
-
 .secondary-btn {
   background: white;
   color: var(--primary);
+  border: 1px solid white;
 }
-
 .primary-btn:hover,
 .secondary-btn:hover {
-  transform: translateY(-4px);
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
 }
 
 /* =========================
-FACILITIES
+REVEAL ON SCROLL
 ========================= */
-.facility-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 30px;
+.reveal {
+  opacity: 0;
+  transform: translateY(40px) scale(0.95);
+  transition: all 0.8s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+.reveal.active {
+  opacity: 1;
+  transform: translateY(0) scale(1);
 }
 
-.facility-card {
+/* =========================
+FACILITIES & TEACHERS
+========================= */
+.facility-card,
+.teacher-card {
+  transition: var(--transition);
   background: white;
-  padding: 35px 25px;
   border-radius: var(--radius);
   box-shadow: var(--shadow);
-  text-align: center;
-  transition: var(--transition);
+  overflow: hidden;
+  cursor: pointer;
+}
+.facility-card:hover,
+.teacher-card:hover {
+  transform: translateY(-15px) scale(1.03);
+  box-shadow: 0 20px 40px rgba(15, 76, 129, 0.15);
 }
 
-.facility-card:hover {
-  transform: translateY(-10px);
-}
-
-.facility-card img {
-  width: 95px;
-  margin: auto;
-  margin-bottom: 20px;
-}
-
-.facility-card h3 {
-  margin-bottom: 14px;
-  font-size: 24px;
-}
-
-.facility-card p {
-  color: var(--gray);
-  line-height: 1.8;
-}
-
-/* =========================
-TEACHERS
-========================= */
-.teacher-grid {
+.facility-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
   gap: 30px;
 }
-
-.teacher-card {
-  background: white;
-  border-radius: 24px;
-  overflow: hidden;
-  box-shadow: var(--shadow);
-  cursor: pointer;
-  transition: var(--transition);
+.facility-card {
+  padding: 40px 25px;
+  text-align: center;
+}
+.facility-card img {
+  width: 80px;
+  margin: 0 auto 20px;
 }
 
-.teacher-card:hover {
-  transform: translateY(-10px);
+.teacher-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 30px;
 }
-
 .teacher-card img {
-  width: 100%;
-  height: 280px;
+  height: 300px;
   object-fit: cover;
 }
-
 .teacher-info {
   padding: 25px;
   text-align: center;
 }
-
 .teacher-info h3 {
   font-size: 26px;
   margin-bottom: 8px;
 }
-
 .teacher-info span {
   color: var(--primary);
   font-weight: 600;
 }
 
 /* =========================
-TESTIMONIAL
+TESTIMONIALS
 ========================= */
-.testimonial-slider {
-  position: relative;
-  max-width: 700px;
+.testimonial-container {
+  max-width: 850px;
   margin: auto;
+  overflow: hidden; /* বাইরের অংশ দেখাবে না */
+  position: relative;
+}
+
+.testimonial-wrapper {
+  display: flex;
+  transition: transform 1.2s cubic-bezier(0.645, 0.045, 0.355, 1); /* সুপার স্মুথ ট্রানজিশন */
+  will-change: transform;
+}
+
+.testimonial-slide {
+  min-width: 100%;
+  padding: 20px;
 }
 
 .testimonial-card {
-  background: white;
-  padding: 50px;
-  border-radius: 24px;
+  background: #fff;
+  padding: 50px 40px;
+  border-radius: 25px;
   text-align: center;
-  box-shadow: var(--shadow);
-  display: none;
-}
-
-.active-slide {
-  display: block;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+  border: 1px solid rgba(15, 76, 129, 0.1);
 }
 
 .testimonial-card i {
   font-size: 40px;
-  color: var(--secondary);
+  color: var(--primary); /* কোটেশন মার্ক নীল রাখার জন্য */
   margin-bottom: 20px;
+  opacity: 0.8;
 }
 
 .testimonial-card p {
   font-size: 20px;
   line-height: 1.8;
+  font-weight: 500;
+  color: #444;
+}
+.testimonial-card h4 {
+  font-size: 22px;
+  color: #d64545; /* শিক্ষার্থীদের নাম লাল রঙের জন্য */
+  font-weight: 700;
+  margin-top: 10px;
+}
+.stars {
+  color: #FFD700; /* স্টারগুলো গোল্ডেন (Golden) কালার করার জন্য */
+  margin: 15px 0;
+  font-size: 22px;
+  letter-spacing: 2px;
+  text-shadow: 0 0 5px rgba(255, 215, 0, 0.3); /* হালকা গ্লো ইফেক্ট */
 }
 
-.stars {
-  color: gold;
-  margin: 20px 0;
+.slider-dots {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 30px;
+}
+
+.dot {
+  width: 10px;
+  height: 10px;
+  background: #ccc;
+  border-radius: 50%;
+  transition: 0.3s;
+}
+
+.dot.active {
+  background: var(--primary);
+  width: 25px;
+  border-radius: 10px;
 }
 
 /* =========================
-CONTACT
+CONTACT & MAP
 ========================= */
 .contact-wrapper {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
   gap: 40px;
-  align-items: center;
 }
-
 .contact-info {
   background: white;
-  padding: 45px;
-  border-radius: 24px;
+  padding: 40px;
+  border-radius: var(--radius);
   box-shadow: var(--shadow);
 }
-
 .contact-info h2 {
-  margin-bottom: 30px;
   font-size: 38px;
+  margin-bottom: 30px;
 }
-
 .contact-item {
   display: flex;
   align-items: center;
   gap: 16px;
   margin-bottom: 20px;
+  font-size: 18px;
 }
-
 .contact-item i {
   color: var(--primary);
-  font-size: 20px;
+  font-size: 22px;
 }
-
 .social-icons {
   display: flex;
   gap: 15px;
   margin-top: 30px;
 }
-
 .social-icons a {
   width: 45px;
   height: 45px;
@@ -432,14 +442,16 @@ CONTACT
   display: flex;
   justify-content: center;
   align-items: center;
+  transition: var(--transition);
 }
-
+.social-icons a:hover {
+  background: var(--secondary);
+  transform: translateY(-3px);
+}
 .map iframe {
   width: 100%;
-  height: 100%;
-  min-height: 420px;
-  border: none;
-  border-radius: 24px;
+  border-radius: var(--radius);
+  min-height: 350px;
 }
 
 /* =========================
@@ -450,29 +462,30 @@ FOOTER
   color: white;
   padding-top: 60px;
 }
-
 .footer-wrapper {
   display: flex;
   justify-content: space-between;
   gap: 40px;
   padding-bottom: 40px;
+  flex-wrap: wrap;
 }
-
 .footer-links {
   display: flex;
   flex-direction: column;
   gap: 14px;
 }
-
 .footer-links a {
   color: white;
+  transition: var(--transition);
 }
-
+.footer-links a:hover {
+  color: var(--secondary);
+  padding-left: 5px;
+}
 .footer-social {
   display: flex;
   gap: 14px;
 }
-
 .footer-social a {
   width: 45px;
   height: 45px;
@@ -482,8 +495,13 @@ FOOTER
   display: flex;
   align-items: center;
   justify-content: center;
+  transition: var(--transition);
 }
-
+.footer-social a:hover {
+  background: var(--secondary);
+  color: white;
+  transform: translateY(-3px);
+}
 .copyright {
   text-align: center;
   border-top: 1px solid rgba(255, 255, 255, 0.15);
@@ -491,13 +509,13 @@ FOOTER
 }
 
 /* =========================
-MODAL
+MODAL (POPUP)
 ========================= */
 .modal-overlay {
   position: fixed;
   inset: 0;
-  background: rgba(0, 0, 0, 0.55);
-  backdrop-filter: blur(6px);
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(8px);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -505,80 +523,74 @@ MODAL
   visibility: hidden;
   transition: var(--transition);
   z-index: 2000;
-  padding: 20px;
+  padding: 15px;
 }
-
 .modal-overlay.active {
   opacity: 1;
   visibility: visible;
 }
-
 .modal-content {
   background: white;
   width: 100%;
-  max-width: 950px;
-  border-radius: 28px;
+  max-width: 900px;
+  border-radius: 25px;
   overflow: hidden;
-  position: relative;
-  transform: translateY(50px);
+  transform: translateY(30px);
   transition: var(--transition);
+  position: relative;
 }
-
 .modal-overlay.active .modal-content {
   transform: translateY(0);
 }
-
 .close-modal {
   position: absolute;
-  right: 20px;
-  top: 20px;
-  width: 45px;
-  height: 45px;
-  border: none;
+  top: 15px;
+  right: 15px;
+  width: 40px;
+  height: 40px;
   border-radius: 50%;
+  border: none;
   background: var(--secondary);
   color: white;
-  font-size: 24px;
   cursor: pointer;
   z-index: 10;
+  font-size: 24px;
+  transition: var(--transition);
 }
-
+.close-modal:hover {
+  transform: scale(1.1);
+}
 .modal-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
 }
-
 .modal-image img {
   height: 100%;
   width: 100%;
   object-fit: cover;
 }
-
 .modal-details {
-  padding: 45px;
+  padding: 40px;
 }
-
 .modal-details h2 {
-  font-size: 40px;
+  font-size: 36px;
   margin-bottom: 10px;
 }
-
 .modal-details h4 {
   color: var(--primary);
-  margin-bottom: 25px;
+  font-size: 20px;
+  margin-bottom: 20px;
 }
-
 .modal-details p {
-  margin-bottom: 18px;
-  line-height: 1.8;
+  font-size: 16px;
+  margin-bottom: 15px;
+  line-height: 1.6;
 }
-
 .modal-social {
   display: flex;
   gap: 15px;
-  margin-top: 30px;
+  margin-top: 25px;
 }
-
 .modal-social a {
   width: 45px;
   height: 45px;
@@ -588,126 +600,58 @@ MODAL
   display: flex;
   align-items: center;
   justify-content: center;
+  transition: var(--transition);
+}
+.modal-social a:hover {
+  background: var(--secondary);
+  transform: translateY(-3px);
 }
 
 /* =========================
-RESPONSIVE (TABLET & MOBILE MENU)
+RESPONSIVE (TABLET & MOBILE)
 ========================= */
-@media(max-width: 992px) {
-  .facility-grid,
-  .teacher-grid,
-  .contact-wrapper {
-    grid-template-columns: 1fr 1fr;
-  }
-
-  /* পিসির মতো মেনু সরাসরি ওপরে রাখা */
-  .nav-menu {
-    position: static;
-    width: auto;
-    height: auto;
-    background: transparent;
-    flex-direction: row;
-    padding: 0;
-    gap: 15px;
-    box-shadow: none;
-    display: flex !important;
-  }
-
-  .nav-menu a {
-    font-size: 14px;
-  }
-
-  .hamburger {
-    display: none !important;
-  }
-
-  .nav-btn {
-    display: none;
-  }
-
-  .logo h2 {
-    font-size: 28px;
-  }
-}
-
-/* =========================
-RESPONSIVE (MOBILE) - FINAL FIX
-========================= */
-@media(max-width: 768px) {
-  /* নেভিবার ও হিরো সেকশন ফিক্স */
-
-  .hero-card {
-    max-width: 95%;        /* মোবাইলে স্ক্রিনের প্রায় পুরোটা জুড়ে থাকবে */
-    padding: 40px 20px;
-  }
-
-  .hero-card h1 {
-    font-size: 28px;       /* মোবাইলে হেডলাইন সাইজ অ্যাডজাস্টমেন্ট */
-  }
-
-  .hero-buttons {
-    flex-direction: column;
-    align-items: center;
-  }
-  
+@media (max-width: 992px) {
   .navbar {
     flex-direction: column;
     gap: 15px;
-    padding: 10px 0;
   }
-
   .nav-menu {
-    gap: 12px;
-    justify-content: center;
+    gap: 15px;
     width: 100%;
-  }
-
-  .nav-menu a {
-    font-size: 13px;
-  }
-
-
-  /* মোডাল বা পপ-আপ ফিক্স (মাঝখানে রাখার জন্য) */
-  .modal-overlay {
-    padding: 10px;
-    display: flex;
     justify-content: center;
-    align-items: center;
   }
-
-  .modal-content {
-    width: 90%;
-    max-width: 350px;
-    transform: none; 
-    margin: auto;
-    position: relative;
-    left: 0;
+  .nav-btn {
+    display: none;
   }
+}
 
-  .modal-grid {
-    display: flex;
+@media (max-width: 768px) {
+  .topbar-wrapper {
     flex-direction: column;
-  }
-
-  .modal-image img {
-    height: 200px;
-    width: 100%;
-    object-fit: cover;
-  }
-
-  .modal-details {
-    padding: 20px;
+    gap: 5px;
     text-align: center;
   }
-
-  /* অন্যান্য গ্রিড ফিক্স */
-  .facility-grid,
-  .teacher-grid,
-  .contact-wrapper {
-    grid-template-columns: 1fr;
+  .testimonial-card {
+    padding: 30px 20px;
   }
 
-  .footer-wrapper {
-    flex-direction: column;
+  /* Modal Mobile Fix */
+  .modal-content {
+    max-width: 350px;
+    max-height: 90vh;
+    overflow-y: auto;
+  }
+  .modal-grid {
+    grid-template-columns: 1fr;
+  }
+  .modal-image img {
+    height: 250px;
+  }
+  .modal-details {
+    padding: 25px;
+    text-align: center;
+  }
+  .modal-social {
+    justify-content: center;
   }
 }
