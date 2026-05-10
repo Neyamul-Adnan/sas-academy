@@ -208,9 +208,26 @@ HERO
   color: white;
   border: 1px solid rgba(255, 255, 255, 0.3);
   text-align: center;
-  animation:
-    fadeInUp 1s ease-out,
-    float 5s ease-in-out infinite;
+  animation: smoothFloat 4s ease-in-out infinite;
+  will-change: transform; /* ব্রাউজারকে আগে থেকেই প্রস্তুত রাখবে */
+}
+@keyframes smoothFloat {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-15px); /* হালকা উপরে উঠবে */
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+/* যদি reveal ক্লাস কার্ডটিকে আটকে দেয়, তবে হিরো কার্ড থেকে এটি সরিয়ে দাও */
+.hero-card.reveal {
+  opacity: 1 !important;
+  transform: none !important;
+  transition: none !important;
 }
 .hero-card h1 {
   font-size: clamp(28px, 6vw, 54px);
@@ -624,7 +641,7 @@ RESPONSIVE (TABLET & MOBILE)
     justify-content: center;
     gap: 10px;
   }
-  
+
   .nav-menu {
     gap: 15px;
     width: 100%;
