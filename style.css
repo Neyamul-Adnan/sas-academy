@@ -680,3 +680,10 @@ RESPONSIVE (TABLET & MOBILE)
     justify-content: center;
   }
 }
+/* শুধুমাত্র মোবাইলে নেভিবার আটকে থাকা বন্ধ করার জন্য */
+@media(max-width: 768px) {
+  .header {
+    position: relative !important; /* স্টিকি পজিশন সরিয়ে নরমাল করা হলো */
+    top: auto !important;
+  }
+}
