@@ -193,7 +193,27 @@ HERO
   position: relative;
   display: flex;
   align-items: center;
-  justify-content: flex-start; /* পিসি ও মোবাইলে কার্ড বাঁদিকে রাখবে */
+  justify-content: center; /* কার্ডটিকে পিসি এবং মোবাইলে মাঝখানে রাখবে */
+  padding: 20px;
+}
+
+.hero-card {
+  width: 100%;             /* পুরো জায়গা নেওয়ার জন্য */
+  max-width: 900px;        /* পিসিতে কার্ডটি কতটুকু চওড়া হবে সেটি নিয়ন্ত্রণ করবে */
+  background: rgba(255, 255, 255, 0.18);
+  backdrop-filter: blur(15px);
+  padding: 60px 40px;      /* ভেতরে স্পেস বাড়ানো হয়েছে */
+  border-radius: 30px;
+  color: white;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  text-align: center;      /* লেখাগুলোকে মাঝখানে রাখার জন্য */
+  margin: 0 auto;
+}
+
+.hero-buttons {
+  display: flex;
+  gap: 20px;
+  justify-content: center; /* বাটনগুলোকে মাঝখানে রাখবে */
 }
 
 .hero-overlay {
@@ -207,16 +227,6 @@ HERO
   z-index: 2;
 }
 
-.hero-card {
-  max-width: 650px;
-  background: rgba(255, 255, 255, 0.18);
-  backdrop-filter: blur(15px);
-  padding: 55px;
-  border-radius: 30px;
-  color: white;
-  border: 1px solid rgba(255, 255, 255, 0.25);
-  margin-left: 5%;
-}
 
 .hero-card h1 {
   font-size: 58px;
@@ -230,10 +240,6 @@ HERO
   margin-bottom: 35px;
 }
 
-.hero-buttons {
-  display: flex;
-  gap: 20px;
-}
 
 .primary-btn,
 .secondary-btn {
@@ -629,6 +635,21 @@ RESPONSIVE (MOBILE) - FINAL FIX
 ========================= */
 @media(max-width: 768px) {
   /* নেভিবার ও হিরো সেকশন ফিক্স */
+
+  .hero-card {
+    max-width: 95%;        /* মোবাইলে স্ক্রিনের প্রায় পুরোটা জুড়ে থাকবে */
+    padding: 40px 20px;
+  }
+
+  .hero-card h1 {
+    font-size: 28px;       /* মোবাইলে হেডলাইন সাইজ অ্যাডজাস্টমেন্ট */
+  }
+
+  .hero-buttons {
+    flex-direction: column;
+    align-items: center;
+  }
+  
   .navbar {
     flex-direction: column;
     gap: 15px;
@@ -645,15 +666,6 @@ RESPONSIVE (MOBILE) - FINAL FIX
     font-size: 13px;
   }
 
-  .hero-card {
-    padding: 25px;
-    max-width: 85%;
-    margin-left: 15px;
-  }
-
-  .hero-card h1 {
-    font-size: 26px;
-  }
 
   /* মোডাল বা পপ-আপ ফিক্স (মাঝখানে রাখার জন্য) */
   .modal-overlay {
